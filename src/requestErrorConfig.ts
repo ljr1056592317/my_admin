@@ -25,6 +25,17 @@ interface ResponseStructure {
  * @doc https://umijs.org/docs/max/request#配置
  */
 export const errorConfig: RequestConfig = {
+  // 默认请求是否带上cookie
+  withCredentials: true,
+  // baseURL: CGI_PREFIX.COMMON, // 请求前缀
+  timeout: 30 * 1000, // 超时时间，默认 30 s
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': 'true',
+    // 配置下默认的请求方式 --- 会被重复设置
+    'Content-Type': 'application/json',
+    token: 123,
+  },
   // 错误处理： umi@3 的错误处理方案。
   errorConfig: {
     // 错误抛出
@@ -89,7 +100,12 @@ export const errorConfig: RequestConfig = {
   requestInterceptors: [
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
-      const url = config?.url?.concat('?token = 123');
+      const url = config?.url?.concat('?token = 123222');
+      console.log(config.headers, 'config.headers');
+      config.headers = {
+        ...config.headers,
+        'Content-Type': 'application/json;',
+      };
       return { ...config, url };
     },
   ],

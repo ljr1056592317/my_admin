@@ -21,7 +21,7 @@ const G6TiimeLine: React.FC<G6TiimeLineProps> = (props) => {
       },
       {
         id: '6730c6898fc281fece3261da',
-        name: 'OLED技术',
+        name: 'OLED技术2',
         style: { x: 180, y: 200 },
       },
       {

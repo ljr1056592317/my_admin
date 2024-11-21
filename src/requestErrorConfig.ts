@@ -32,9 +32,8 @@ export const errorConfig: RequestConfig = {
   headers: {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': 'true',
-    // 配置下默认的请求方式 --- 会被重复设置
+    // 配置下默认的请求方式 --- 在umi中的mock数据中使用的oneapi会被重复设置,进而被覆盖掉
     'Content-Type': 'application/json',
-    token: 123,
   },
   // 错误处理： umi@3 的错误处理方案。
   errorConfig: {
@@ -100,13 +99,11 @@ export const errorConfig: RequestConfig = {
   requestInterceptors: [
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
-      const url = config?.url?.concat('?token = 123222');
-      console.log(config.headers, 'config.headers');
       config.headers = {
         ...config.headers,
-        'Content-Type': 'application/json;',
+        token: localStorage?.getItem('token') || '',
       };
-      return { ...config, url };
+      return { ...config };
     },
   ],
 

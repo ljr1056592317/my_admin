@@ -41,7 +41,7 @@ const G6TiimeLine: React.FC<G6TiimeLineProps> = (props) => {
       },
     ],
     edges: [
-      { id: 'edge-1', source: '1987', target: '2005' },
+      { id: 'edge-1-1', source: '1987', target: '2005' },
       { id: 'edge-2', source: '1987', target: '6730c6898fc281fece3261da' },
       { id: 'edge-3', source: '1987', target: '6730c6898fc281fece3261dc' },
       { id: 'edge-4', source: '2005', target: '6730c6898fc281fece32622a' },

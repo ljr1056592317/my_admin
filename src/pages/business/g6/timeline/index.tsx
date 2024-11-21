@@ -51,7 +51,7 @@ const G6TiimeLine: React.FC<G6TiimeLineProps> = (props) => {
   const { graphRef, renderGraph } = useG6BaseHook({});
   const { convertDataToGragh } = useTimelineHook({ graph: graphRef.current as Graph });
   const newData = convertDataToGragh(mockTimelineData);
-  console.log(newData, 'newData');
+  console.log(newData, 'newData222');
 
   const graphOptions: GraphOptions = useMemo(() => {
     return {
